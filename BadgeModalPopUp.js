@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const MODAL_W = 400;
 const MODAL_H = 400;
 
-export default function BadgePopModal() {
+export default function BadgePopModal({ outsideClose = false }) {
   const badgeRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [origin, setOrigin] = useState({ x: 0, y: 0 }); // initial translate (from badge -> center)
@@ -143,7 +143,7 @@ export default function BadgePopModal() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setOpen(false)}
+            onClick={() => outsideClose && setOpen(false)}
             style={{
               position: "fixed",
               inset: 0,
@@ -217,3 +217,4 @@ export default function BadgePopModal() {
     </>
   );
 }
+
