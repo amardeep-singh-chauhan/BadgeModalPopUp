@@ -4,10 +4,7 @@ import { Box, Paper, Typography, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { motion, AnimatePresence } from "framer-motion";
 
-const MODAL_W = 400;
-const MODAL_H = 400;
-
-export default function BadgePopModal({ outsideClose = false }) {
+export default function BadgePopModal({ outsideClose = false, modalWidth = "50%", modalHeight = "50vh", }) {
   const badgeRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [origin, setOrigin] = useState({ x: 0, y: 0 }); // initial translate (from badge -> center)
@@ -164,8 +161,8 @@ export default function BadgePopModal({ outsideClose = false }) {
               animate="animate"
               exit="exit"
               style={{
-                width: MODAL_W,
-                height: MODAL_H,
+                width: modalWidth,
+                height: modalHeight,
                 zIndex: 1401,
                 willChange: "transform, opacity",
               }}
@@ -217,4 +214,5 @@ export default function BadgePopModal({ outsideClose = false }) {
     </>
   );
 }
+
 
